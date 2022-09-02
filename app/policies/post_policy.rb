@@ -1,26 +1,35 @@
 # frozen_string_literal: true
 
-# app/policies/post_policy.rb
-
+# Post_Policy
+#
 class PostPolicy < ApplicationPolicy
   def index?
     true
   end
 
-  def create?
+  def new?
     user.present?
+  end
+
+  def create?
+    new?
   end
 
   def show?
-    user.present?
+    # user.present?
+    true
+  end
+
+  def edit?
+    user.present? && user.eql?(post.user)
   end
 
   def update?
-    return true if user.present? && user == post.user
+    edit?
   end
 
   def destroy?
-    return true if user.present? && user == post.user
+    user.present? && user.eql?(post.user)
   end
 
   private

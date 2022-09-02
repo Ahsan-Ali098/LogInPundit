@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+# Application
+#
 require_relative 'boot'
 
 require 'rails/all'
@@ -9,6 +11,7 @@ require 'rails/all'
 Bundler.require(*Rails.groups)
 
 module Pundit
+  # class application
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.2
